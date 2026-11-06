@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SILVA VENDAS - Diamantes Free Fire | Recarga Oficial</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#fff7ed;color:#222;padding-bottom:95px}
+header{background:#ea580c;color:#fff;position:sticky;top:0;z-index:30;padding:12px 14px}
+.top{display:flex;align-items:center;gap:10px}
+.logo{font-size:20px;font-weight:900;line-height:1;cursor:pointer}
+.logo span{color:#fde68a}
+.logo small{display:block;font-size:9px;letter-spacing:2px;color:#ffedd5}
+.badge{background:#fff;color:#ea580c;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:900;margin-left:auto;cursor:pointer}
+.hero{background:linear-gradient(135deg,#ea580c,#f97316,#facc15);color:#fff;margin:12px;border-radius:18px;padding:22px;text-align:center;position:relative;overflow:hidden}
+.hero h1{font-size:28px;line-height:1.1}
+.hero h1 span{color:#fef08a}
+.hero p{margin:8px 0 14px;font-size:13px}
+.hero button{background:#fff;color:#ea580c;border:none;padding:12px 22px;border-radius:25px;font-weight:900;cursor:pointer}
+.hero .big{position:absolute;right:-10px;bottom:-25px;font-size:100px;opacity:.25}
+.timer{background:#111;color:#fff;text-align:center;padding:9px;font-size:13px;font-weight:bold}
+.timer span{color:#facc15}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 14px 0}
+.tabs button{background:#fff;border:1px solid #fed7aa;padding:9px 15px;border-radius:20px;cursor:pointer;white-space:nowrap;font-weight:bold}
+.tabs button.active{background:#ea580c;color:#fff}
+.wrap{padding:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#fff;border:2px solid #ffedd5;border-radius:16px;padding:14px;text-align:center;cursor:pointer;position:relative}
+.card.popular{border-color:#ea580c;background:#fff7ed}
+.card.popular::before{content:"🔥 MAIS VENDIDO";position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#ea580c;color:#fff;font-size:10px;padding:4px 10px;border-radius:20px;font-weight:900}
+.card .dima{font-size:38px}
+.card h3{font-size:15px;margin:5px 0}
+.card .bonus{font-size:11px;color:#16a34a;font-weight:bold;min-height:14px}
+.card .old{color:#999;text-decoration:line-through;font-size:12px}
+.card .price{font-size:20px;font-weight:900;color:#ea580c}
+.card .pix{font-size:11px;color:#16a34a}
+.card button{width:100%;margin-top:8px;background:#ea580c;color:#fff;border:none;padding:10px;border-radius:10px;font-weight:900;cursor:pointer}
+.section{background:#fff;border-radius:16px;padding:15px;margin-top:14px;border:1px solid #ffedd5}
+.section h3{margin-bottom:8px}
+.section p{font-size:13px;color:#555;line-height:1.6}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;text-align:center;margin-top:10px}
+.steps div{background:#fff7ed;padding:10px;border-radius:12px}
+.steps b{font-size:20px;display:block}
+.steps span{font-size:11px}
+input,select,textarea{width:100%;padding:13px;border:2px solid #fed7aa;border-radius:12px;margin-top:8px;outline:none;font-size:15px}
+label{font-size:13px;font-weight:bold;margin-top:12px;display:block}
+.btn{width:100%;margin-top:12px;background:#ea580c;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:900;cursor:pointer;font-size:16px}
+.btn.green{background:#22c55e}
+.btn.dark{background:#111}
+.btn.outline{background:#fff;color:#222;border:1px solid #ddd}
+.btn.yellow{background:#facc15;color:#000}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;z-index:50;overflow-y:auto}
+.modal.open{display:block}
+.modal-box{background:#fff;margin:15px auto;max-width:540px;border-radius:18px;overflow:hidden;padding-bottom:15px}
+.modal-box .pad{padding:15px}
+.close{float:right;background:#eee;border:none;padding:6px 10px;border-radius:20px;cursor:pointer}
+.pixbox{background:#f0fdf4;border:2px dashed #22c55e;border-radius:12px;padding:12px;text-align:center;margin-top:10px}
+.denom{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.denom button{background:#fff;border:2px solid #eee;padding:12px 5px;border-radius:12px;cursor:pointer}
+.denom button.active{border-color:#ea580c;background:#fff1f2}
+footer{background:#111;color:#aaa;text-align:center;padding:20px;font-size:12px;line-height:1.6}
+.whats{position:fixed;bottom:65px;right:15px;background:#25D366;color:#fff;padding:13px 18px;border-radius:30px;text-decoration:none;font-weight:900;z-index:40;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+.toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:30px;display:none;z-index:99}
+.hidden{display:none}
+.bottomnav{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee;z-index:30;font-size:11px;text-align:center}
+.bottomnav div{cursor:pointer}
+.bottomnav div.active{color:#ea580c;font-weight:900}
+.stat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;text-align:center}
+.stat div{background:#fff7ed;padding:12px;border-radius:12px}
+.stat b{font-size:18px;display:block;color:#ea580c}
+.stat span{font-size:11px}
+.review{border-bottom:1px solid #eee;padding:10px 0}
+.review:last-child{border:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <div class="logo" onclick="showPage('home')">SILVA<span> VENDAS</span><small>DIAMANTES FF • OFICIAL</small></div>
+    <div class="badge" onclick="showPage('login')">👤 Entrar</div>
+  </div>
+</header>
+
+<div class="timer">⏰ PROMOÇÃO TERMINA EM <span id="timer">14:59</span> • Pix com 15% OFF + Bônus hoje!</div>
+
+<!-- HOME -->
+<div id="page-home">
+  <div class="hero">
+    <div class="big">💎</div>
+    <h1>DIAMANTES<br><span>FREE FIRE</span></h1>
+    <p>Recarga oficial • Entrega em até 5 minutos • Sem senha • 100% Seguro</p>
+    <button onclick="document.getElementById('pacotes').scrollIntoView()">💎 COMPRAR DIAMANTES →</button>
+    <p style="margin-top:10px;font-size:12px">⭐ 4.9/5 • 2.347 avaliações • +15.000 recargas feitas</p>
+  </div>
+
+  <div class="tabs">
+    <button class="active" onclick="filtrarCat('Todos',this)">Todos</button>
+    <button onclick="filtrarCat('Diamantes',this)">💎 Diamantes</button>
+    <button onclick="filtrarCat('Passe',this)">🎟️ Passe Booyah</button>
+    <button onclick="filtrarCat('Combo',this)">🔥 Combos</button>
+  </div>
+
+  <div class="wrap">
+    <div class="steps">
+      <div><b>1️⃣</b><span>Escolha pacote</span></div>
+      <div><b>2️⃣</b><span>Digite seu ID</span></div>
+      <div><b>3️⃣</b><span>Pague no Pix</span></div>
+      <div><b>4️⃣</b><span>Receba no jogo</span></div>
+    </div>
+
+    <h3 style="margin:16px 0 10px" id="pacotes">💎 Escolha seu pacote</h3>
+    <div class="grid" id="lista"></div>
+
+    <div class="section">
+      <h3>🎁 Bônus de Hoje</h3>
+      <p>✅ 520 Diamantes = +20 Bônus<br>✅ 1060 Diamantes = +100 Bônus<br>✅ 2180 Diamantes = +250 Bônus<br>✅ 5600 Diamantes = +800 Bônus<br>✅ Cupom <b>SILVA15</b> = 15% OFF no Pix<br>✅ Cupom <b>PRIMEIRA</b> = 20% OFF na 1ª compra</p>
+    </div>
+
+    <div class="section">
+      <h3>⭐ O que falam da Silva Vendas</h3>
+      <div class="review">⭐⭐⭐⭐⭐ <b>Lucas - SP</b><br>"Chegou em 2 minutos, top demais! Já comprei 5x"</div>
+      <div class="review">⭐⭐⭐⭐⭐ <b>Maria - RJ</b><br>"Melhor preço que achei, atendimento no Whats na hora"</div>
+      <div class="review">⭐⭐⭐⭐⭐ <b>Pedro - MG</b><br>"Comprei 2180, veio 2430 com bônus. Recomendo!"</div>
+      <div class="review">⭐⭐⭐⭐⭐ <b>Ana - BA</b><br>"Tive medo, mas chegou certinho. Virei cliente fiel"</div>
+    </div>
+
+    <div class="section">
+      <h3>❓ Como funciona? / Onde acho meu ID?</h3>
+      <p>1. Escolha o pacote de diamantes<br>2. Digite seu ID do Free Fire <b>(NUNCA pedimos senha!)</b><br>3. Pague com Pix - copia e cola<br>4. Diamantes caem em até 5 minutos<br><br><b>Onde achar seu ID?</b><br>Abra o Free Fire > Clique no seu Perfil > Seu ID está embaixo do seu nome. Ex: 1234567890</p>
+      <button class="btn outline" onclick="toast('Exemplo: ID fica no seu perfil do jogo, embaixo do nick')">Ver onde fica o ID</button>
+    </div>
+
+    <div class="section">
+      <h3>❓ Perguntas Frequentes</h3>
+      <p><b>É seguro?</b> Sim, recarga oficial, não precisa de senha.<br><b>Demora quanto?</b> Até 5 minutos após o pagamento.<br><b>E se não chegar?</b> Chama no WhatsApp que devolvemos ou reenviamos.<br><b>Posso parcelar?</b> Sim, no cartão em até 3x.<br><b>Tem reembolso?</b> Sim, se não entregar em 30 min.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PEDIDOS -->
+<div id="page-pedidos" class="hidden">
+  <div class="wrap">
+    <div class="section"><h3>📦 Meus Pedidos</h3><div id="listaPedidos"><p style="color:#888">Nenhum pedido ainda. Compre um pacote acima.</p></div></div>
+    <div class="section"><h3>🔍 Rastrear Pedido</h3><label>Código do pedido</label><input id="trackCode" placeholder="Ex: SV-1234"><button class="btn" onclick="toast('Pedido SV-1234: Entregue ✅ - Diamantes já na conta!')">Rastrear</button></div>
+  </div>
+</div>
+
+<!-- CONTA / LOGIN -->
+<div id="page-login" class="hidden">
+  <div class="wrap">
+    <div class="section"><h3>👤 Entrar / Criar Conta</h3>
+      <label>Nome</label><input id="loginNome" placeholder="Seu nome">
+      <label>WhatsApp</label><input placeholder="(00) 00000-0000">
+      <label>ID do Free Fire</label><input placeholder="Seu ID no jogo">
+      <button class="btn" onclick="entrar()">Entrar na Silva Vendas</button>
+      <p style="font-size:12px;text-align:center;margin-top:8px">Ao entrar você ganha 50 pontos de bônus</p>
+    </div>
+    <div class="section"><h3>💎 Meus Pontos</h3><p style="font-size:22px;font-weight:900;color:#ea580c">1.250 Pontos</p><p>100 pontos = R$ 1 de desconto. A cada compra você ganha pontos.</p><button class="btn yellow" onclick="toast('Você tem R$ 12,50 de desconto disponível!')">Usar Meus Pontos</button></div>
+  </div>
+</div>
+
+<!-- PAINEL DO DONO -->
+<div id="page-admin" class="hidden">
+  <div class="wrap">
+    <div class="section"><h3>📊 Painel do Dono - Silva Vendas</h3>
+      <div class="stat"><div><b id="statVendas">R$ 0</b><span>Vendas Hoje</span></div><div><b id="statPedidos">0</b><span>Pedidos</span></div><div><b>4.9 ⭐</b><span>Avaliação</span></div></div>
+      <label>Adicionar novo pacote</label>
+      <input id="novoQtd" type="number" placeholder="Qtd Diamantes ex: 500">
+      <input id="novoPreco" type="number" placeholder="Preço ex: 19.99">
+      <input id="novoBonus" type="number" placeholder="Bônus ex: 50">
+      <button class="btn" onclick="addPacote()">+ Adicionar Pacote</button>
+      <label>Alterar cupom</label><input value="SILVA15 - 15% OFF">
+      <button class="btn dark" onclick="toast('Cupom atualizado!')">Salvar Configurações</button>
+    </div>
+    <div class="section"><h3>📦 Pedidos Recentes (Dono)</h3><div id="listaAdmin"><p style="color:#888">Nenhum pedido ainda.</p></div></div>
+  </div>
+</div>
+
+<footer>© 2026 SILVA VENDAS - Diamantes Free Fire<br>Recarga segura • Suporte 24h • Termos • Privacidade • Reembolso<br>Este site não é afiliado à Garena. Free Fire é marca da Garena.</footer>
+<a class="whats" href="https://wa.me/5500000000000?text=Oi%20Silva%20Vendas!%20Quero%20comprar%20diamantes%20FF">💬 Comprar no WhatsApp</a>
+<div class="toast" id="toast"></div>
+
+<div class="bottomnav">
+  <div class="active" onclick="showPage('home',this)">🏠<br>Início</div>
+  <div onclick="showPage('pedidos',this)">📦<br>Pedidos</div>
+  <div onclick="showPage('login',this)">👤<br>Conta</div>
+  <div onclick="showPage('admin',this)">📊<br>Painel</div>
+  <div onclick="window.open('https://wa.me/5500000000000')">💬<br>Ajuda</div>
+</div>
+
+<!-- MODAL COMPRA -->
+<div class="modal" id="modalCompra">
+  <div class="modal-box"><div class="pad"><button class="close" onclick="fechar()">X</button></div>
+    <div class="pad" style="padding-top:0">
+      <h2 id="mTitulo"></h2>
+      <p style="color:#888;font-size:13px">Free Fire • Entrega em até 5 minutos • Sem senha</p>
+      <label>1. Seu ID do Free Fire *</label>
+      <input id="mID" placeholder="Ex: 1234567890" type="number">
+      <p style="font-size:12px;color:#888;margin-top:5px">Onde achar? FF > Perfil > ID embaixo do nome</p>
+      <label>2. Seu Nick (opcional)</label><input id="mNick" placeholder="Ex: SilvaPro">
+      <label>3. Cupom</label><input id="mCupom" value="SILVA15" placeholder="SILVA15">
+      <button class="btn outline" onclick="aplicarCupom()">Aplicar Cupom</button>
+      <label>4. Pagamento</label>
+      <select id="mPag" onchange="atualizarTotal()"><option value="pix">Pix - 15% OFF</option><option value="cartao">Cartão de Crédito - até 3x</option><option value="boleto">Boleto</option></select>
+      <div id="cartaoArea" class="hidden"><input placeholder="Número do cartão"><input placeholder="Validade"><input placeholder="CVV"></div>
+      <h3 id="mTotal" style="margin-top:12px;color:#16a34a"></h3>
+      <p id="mEconomia" style="font-size:12px;color:#16a34a"></p>
+      <button class="btn green" onclick="gerarPix()">Gerar Pagamento e Pagar</button>
+      <div id="pixArea" class="hidden">
+        <div class="pixbox"><b>✅ Pagamento Gerado!</b><br>
+          <p style="font-size:12px;margin:6px 0">Copie e pague no seu banco:</p>
+          <p style="background:#fff;padding:8px;border-radius:8px;font-size:11px;word-break:break-all" id="pixCodigo">00020126580014BR.GOV.BCB.PIX.SILVA-VENDAS-FF-1234</p>
+          <button class="btn" onclick="copiarPix()">📋 Copiar Código Pix</button>
+          <p style="font-size:12px;margin-top:8px">Após pagar, clique:</p>
+          <button class="btn" onclick="confirmar()">Já Paguei - Confirmar Pedido</button>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#888;text-align:center;margin-top:8px">🔒 Pagamento 100% seguro • Entrega em até 5 min • Suporte no WhatsApp</p>
+    </div>
+  </div>
+</div>
+
+<script>
+let pacotes=[
+{q:100,bonus:0,preco:4.99,old:6.99,popular:false,cat:"Diamantes"},
+{q:310,bonus:0,preco:14.99,old:19.99,popular:false,cat:"Diamantes"},
+{q:520,bonus:20,preco:24.99,old:32.99,popular:true,cat:"Diamantes"},
+{q:1060,bonus:100,preco:49.99,old:64.99,popular:true,cat:"Diamantes"},
+{q:2180,bonus:250,preco:99.99,old:129.99,popular:false,cat:"Diamantes"},
+{q:5600,bonus:800,preco:249.99,old:329.99,popular:false,cat:"Diamantes"},
+{q:3100,bonus:300,preco:139.99,old:179.99,popular:false,cat:"Combo"},
+{q:11200,bonus:1500,preco:449.99,old:599.99,popular:false,cat:"Combo"},
+{q:1,bonus:0,preco:29.99,old:39.99,popular:true,cat:"Passe",nome:"Passe Booyah"},
+{q:1,bonus:0,preco:39.99,old:54.99,popular:false,cat:"Passe",nome:"Passe Booyah + 100 Dimas"},
+];
+let atual=null, pedidos=[], catAtual="Todos", desconto=0.15, totalVendas=0;
+function render(){
+  let lista=document.getElementById('lista'); lista.innerHTML="";
+  pacotes.filter(p=>catAtual=="Todos"||p.cat==catAtual).forEach((p,i)=>{
+    let nome=p.nome? p.nome : p.q+" Diamantes";
+    let idx=pacotes.indexOf(p);
+    lista.innerHTML+=`<div class="card ${p.popular?'popular':''}" onclick="abrir(${idx})"><div class="dima">${p.cat=='Passe'?'🎟️':'💎'}</div><h3>${nome}</h3>${p.bonus?`<div class="bonus">+ ${p.bonus} BÔNUS 🎁</div>`:`<div class="bonus">Entrega rápida ⚡</div>`}<div class="old">R$ ${p.old.toFixed(2).replace('.',',')}</div><div class="price">R$ ${p.preco.toFixed(2).replace('.',',')}</div><div class="pix">No Pix: R$ ${(p.preco*0.85).toFixed(2).replace('.',',')}</div><button onclick="event.stopPropagation();abrir(${idx})">Comprar Agora</button></div>`;
+  });
+}
+function filtrarCat(c,el){catAtual=c; document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); if(el) el.classList.add('active'); render();}
+function showPage(id,el){['home','pedidos','login','admin'].forEach(p=>document.getElementById('page-'+p).classList.add('hidden')); document.getElementById('page-'+id).classList.remove('hidden'); document.querySelectorAll('.bottomnav div').forEach(d=>d.classList.remove('active')); if(el) el.classList.add('active'); window.scrollTo(0,0);}
+function abrir(i){
+  atual=pacotes[i];
+  let nome=atual.nome? atual.nome : atual.q+" Diamantes "+(atual.bonus?"+ "+atual.bonus+" Bônus":"");
+  document.getElementById('mTitulo').innerText="💎 "+nome;
+  document.getElementById('pixArea').classList.add('hidden');
+  atualizarTotal();
+  document.getElementById('modalCompra').classList.add('open');
+}
+function aplicarCupom(){
+  let c=document.getElementById('mCupom').value.toUpperCase();
+  if(c=="SILVA15"){desconto=0.15; toast('Cupom SILVA15 aplicado: 15% OFF!')}
+  else if(c=="PRIMEIRA"){desconto=0.20; toast('Cupom PRIMEIRA aplicado: 20% OFF!')}
+  else {desconto=0; toast('Cupom inválido')}
+  atualizarTotal();
+}
+function atualizarTotal(){
+  let pag=document.getElementById('mPag').value;
+  document.getElementById('cartaoArea').classList.toggle('hidden', pag!='cartao');
+  let total = pag=='pix' ? atual.preco*(1-desconto) : atual.preco;
+  document.getElementById('mTotal').innerText="Total: R$ "+total.toFixed(2).replace('.',',');
+  document.getElementById('mEconomia').innerText = pag=='pix' ? "Você economizou R$ "+(atual.preco*desconto).toFixed(2).replace('.',',')+" no Pix!" : "Parcele em até 3x sem juros no cartão";
+}
+function fechar(){document.getElementById('modalCompra').classList.remove('open')}
+function gerarPix(){
+  let id=document.getElementById('mID').value;
+  if(!id||id.length<5) return toast('Digite seu ID do Free Fire!');
+  document.getElementById('pixArea').classList.remove('hidden');
+  toast('Pagamento gerado! Copie e pague.');
+}
+function copiarPix(){toast('Código Pix copiado!')}
+function confirmar(){
+  let id=document.getElementById('mID').value; let nick=document.getElementById('mNick').value||"Jogador";
+  let pag=document.getElementById('mPag').value;
+  let total = pag=='pix' ? atual.preco*(1-desconto) : atual.preco;
+  let codigo="SV-"+Math.floor(1000+Math.random()*9000);
+  pedidos.push({codigo, q:atual.q, bonus:atual.bonus, nome:atual.nome, id, nick, total});
+  totalVendas+=total;
+  document.getElementById('listaPedidos').innerHTML = pedidos.map(p=>`<div style="background:#f0fdf4;border:1px solid #bbf7d0;padding:12px;border-radius:12px;margin-top:8px"><b>${p.codigo} • ${p.nome? p.nome : "💎 "+p.q+" Diamantes "+(p.bonus?"+ "+p.bonus+" bônus":"")}</b><br>ID: ${p.id} • Nick: ${p.nick}<br>Total: R$ ${p.total.toFixed(2).replace('.',',')} • <span style="color:green">✅ Confirmado - Enviando em 5 min</span><br><button class="btn green" style="padding:8px;margin-top:6px" onclick="toast('Seu pedido ${p.codigo} está sendo entregue! Olhe no jogo.')">Ver Status</button></div>`).join('');
+  document.getElementById('listaAdmin').innerHTML = pedidos.map(p=>`<div style="border:1px solid #eee;padding:10px;border-radius:10px;margin-top:8px"><b>${p.codigo}</b> - ID ${p.id} - R$ ${p.total.toFixed(2).replace('.',',')} - <span style="color:green">PAGO</span></div>`).join('');
+  document.getElementById('statVendas').innerText="R$ "+totalVendas.toFixed(2).replace('.',',');
+  document.getElementById('statPedidos').innerText=pedidos.length;
+  fechar(); toast('Pedido '+codigo+' confirmado! Diamantes a caminho!'); showPage('pedidos');
+}
+function entrar(){let n=document.getElementById('loginNome').value||"Cliente"; toast('Bem-vindo, '+n+'! Você ganhou 50 pontos!'); showPage('home');}
+function addPacote(){
+  let q=parseInt(document.getElementById('novoQtd').value||0);
+  let pr=parseFloat(document.getElementById('novoPreco').value||0);
+  let bo=parseInt(document.getElementById('novoBonus').value||0);
+  if(!q||!pr) return toast('Preencha qtd e preço!');
+  pacotes.unshift({q,bonus:bo,preco:pr,old:pr*1.3,popular:false,cat:"Diamantes"});
+  toast('Pacote adicionado!'); render(); showPage('home');
+}
+function toast(msg){let t=document.getElementById('toast'); t.innerText=msg; t.style.display='block'; setTimeout(()=>t.style.display='none',3000)}
+let seg=899; setInterval(()=>{seg--; if(seg<0) seg=899; let m=Math.floor(seg/60); let s=seg%60; document.getElementById('timer').innerText=(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);},1000);
+render();
+</script>
+</body>
+</html>
